@@ -49,3 +49,24 @@ body {
     margin: 0 auto;
     padding: 0 12px;
 }
+
+/* Стили для блоков кода внутри сообщений */
+.ai-message pre {
+    background: #1a1a1a;
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 0.5rem 0;
+    overflow-x: auto;
+}
+
+.ai-message code {
+    font-family: monospace;
+    font-size: 0.9em;
+}
+
+/* Для инлайн-кода */
+.ai-message p code {
+    background: rgba(0,0,0,0.1);
+    padding: 2px 4px;
+    border-radius: 4px;
+}

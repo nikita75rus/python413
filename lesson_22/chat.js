@@ -71,9 +71,21 @@ async function makeRequest(userPrompt, model = modelAI) {
 function createMessageElement(content, isUser) {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message', isUser ? 'user-message' : 'ai-message');
-    messageDiv.textContent = content;
+    
+    if (isUser) {
+        messageDiv.textContent = content;
+    } else {
+        // Для сообщений ИИ используем marked для парсинга MD
+        messageDiv.innerHTML = marked.parse(content);
+        // Подсвечиваем код во всех code-блоках
+        messageDiv.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightElement(block);
+        });
+    }
+    
     return messageDiv;
 }
+
 
 // Функция добавления сообщения в чат
 function addMessageToChat(content, isUser) {
