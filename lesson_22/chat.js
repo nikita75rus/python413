@@ -1,43 +1,21 @@
-// curl https://api.openai.com/v1/chat/completions
-// https://api.vsegpt.ru/v1
-// https://api.vsegpt.ru/v1/chat/completions
-// sk-or-vv-32acad84830483432df6bb1eb3114ede486fe620ba237c07f152b84c6a27e782
-
-// -H "Content-Type: application/json"
-// -H "Authorization: Bearer $OPENAI_API_KEY"
-// -d '{
-// "model": "openai/gpt-4o-mini",
-// "messages": [
-//     {
-//     "role": "system",
-//     "content": "You are a helpful assistant."
-//     },
-//     {
-//     "role": "user",
-//     "content": "Who won the world series in 2020?"
-//     },
-//     {
-//     "role": "assistant",
-//     "content": "The Los Angeles Dodgers won the World Series in 2020."
-//     },
-//     {
-//     "role": "user",
-//     "content": "Where was it played?"
-//     }
-// ]
-// }'
-
 const apiKey = 'sk-or-vv-32acad84830483432df6bb1eb3114ede486fe620ba237c07f152b84c6a27e782';
 const apiUrl = 'https://api.vsegpt.ru/v1/chat/completions';
+
 // 'openai/gpt-4o-mini'
 // 'anthropic/claude-3-5-haiku'
 const modelAI = 'anthropic/claude-3-5-haiku'; 
 const chatHistory = [];
 const systemPrompt = 'Ты асистент-помощник. Ты отвечаешь на вопросы пользователя на русском языке. Великолепно знаешь русский. Ты отвечаешь лаконично, если тебя не попросят об ином.';
 
+// Основные элементы DOM
+const chatMessages = document.getElementById('chat-messages');
+const chatForm = document.getElementById('chat-form');
+const userInput = document.getElementById('user-input');
+const maxTokens = 200;
+const temperature = 0.7;
+
 // Универсальная функция для текстовых запросов.
 // Принимает пользовательский запрос и модель. Возвращает ответ сервера. и пополняет историю чата (которая лежит в chatHistory)
-
 async function makeRequest(userPrompt, model = modelAI) {
     // Добавляем системный промпт в начало истории, если история пуста
     if (chatHistory.length === 0) {
@@ -57,10 +35,10 @@ async function makeRequest(userPrompt, model = modelAI) {
     const requestBody = {
         model: model,
         messages: chatHistory,
-        temperature: 0.7,
+        temperature: temperature,
         // Для gpt4o серии это 16000
         // Для claude haiku 3.5 это 8100
-        max_tokens: 200
+        max_tokens: maxTokens,
     };
 
     try {
@@ -79,7 +57,7 @@ async function makeRequest(userPrompt, model = modelAI) {
         if (data.choices && data.choices[0].message) {
             chatHistory.push(data.choices[0].message);
         }
-
+        console.log(data.choices[0].message.content);
         return data.choices[0].message.content;
     } catch (error) {
         console.error('Ошибка при выполнении запроса:', error);
@@ -88,7 +66,49 @@ async function makeRequest(userPrompt, model = modelAI) {
 }
 
 
-// Пример использования
-// makeRequest('Расскажи 5 шуток понятных жителю СНГ про JS разработчика')
-//     .then(response => console.log(response))
-//     .catch(error => console.error(error));
+
+// Функция создания сообщения в чате
+function createMessageElement(content, isUser) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', isUser ? 'user-message' : 'ai-message');
+    messageDiv.textContent = content;
+    return messageDiv;
+}
+
+// Функция добавления сообщения в чат
+function addMessageToChat(content, isUser) {
+    const messageElement = createMessageElement(content, isUser);
+    chatMessages.appendChild(messageElement);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// Функция обработки отправки формы
+async function handleSubmit(event) {
+    event.preventDefault();
+    
+    const userMessage = userInput.value.trim();
+    if (!userMessage) return;
+
+    // Добавляем сообщение пользователя
+    addMessageToChat(userMessage, true);
+    userInput.value = '';
+
+    try {
+        // Получаем ответ от ИИ
+        const aiResponse = await makeRequest(userMessage);
+        // Добавляем ответ ИИ
+        addMessageToChat(aiResponse, false);
+    } catch (error) {
+        addMessageToChat('Произошла ошибка при получении ответа', false);
+        console.error('Ошибка:', error);
+    }
+}
+
+// Инициализация обработчиков событий
+function initChat() {
+    chatForm.addEventListener('submit', handleSubmit);
+    userInput.focus();
+}
+
+// Запуск чата
+initChat();

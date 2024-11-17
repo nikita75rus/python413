@@ -20,13 +20,13 @@ body {
 }
 
 /* Стили для сообщений пользователя, выравнивание влево */
-.user-message {
+.ai-message {
     margin-right: auto;
     background-color: #e9ecef;
 }
 
 /* Стили для сообщений ИИ, выравнивание вправо */
-.ai-message {
+.user-message {
     margin-left: auto;
     background-color: #0d6efd;
     color: white;
