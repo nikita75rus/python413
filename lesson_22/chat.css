@@ -1,0 +1,51 @@
+/* Устанавливает минимальную высоту страницы и отступ снизу для фиксированного футера */
+body {
+    min-height: 100vh;
+    padding-bottom: 80px;
+    position: relative;
+}
+
+/* Контейнер для чата с вертикальной прокруткой */
+.chat-container {
+    padding: 20px 0;
+    overflow-y: auto;
+}
+
+/* Базовые стили для сообщений в чате */
+.message {
+    max-width: 80%;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 15px;
+}
+
+/* Стили для сообщений пользователя, выравнивание влево */
+.user-message {
+    margin-right: auto;
+    background-color: #e9ecef;
+}
+
+/* Стили для сообщений ИИ, выравнивание вправо */
+.ai-message {
+    margin-left: auto;
+    background-color: #0d6efd;
+    color: white;
+}
+
+/* Фиксированный контейнер для поля ввода внизу страницы */
+.input-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1rem;
+    background-color: white;
+    border-top: 1px solid #dee2e6;
+}
+
+/* Центрирование формы ввода и установка максимальной ширины */
+.input-container form {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 12px;
+}
