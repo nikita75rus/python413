@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Методы массивов JavaScript</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-5">
+    <h1 class="mb-4">Методы массивов JavaScript</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Метод/Свойство</th>
+                <th>Описание</th>
+                <th>Аргументы</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><code>length</code></td>
+                <td>Свойство, возвращающее количество элементов в массиве.</td>
+                <td>Нет</td>
+            </tr>
+            <tr>
+                <td><code>push()</code></td>
+                <td>Добавляет один или несколько элементов в конец массива и возвращает новую длину массива.</td>
+                <td>Элементы для добавления</td>
+            </tr>
+            <tr>
+                <td><code>pop()</code></td>
+                <td>Удаляет последний элемент из массива и возвращает его.</td>
+                <td>Нет</td>
+            </tr>
+            <tr>
+                <td><code>shift()</code></td>
+                <td>Удаляет первый элемент из массива и возвращает его.</td>
+                <td>Нет</td>
+            </tr>
+            <tr>
+                <td><code>unshift()</code></td>
+                <td>Добавляет один или несколько элементов в начало массива и возвращает новую длину массива.</td>
+                <td>Элементы для добавления</td>
+            </tr>
+            <tr>
+                <td><code>concat()</code></td>
+                <td>Объединяет два или более массивов и возвращает новый массив.</td>
+                <td>Массивы для объединения</td>
+            </tr>
+            <tr>
+                <td><code>slice()</code></td>
+                <td>Возвращает новый массив, содержащий копию части исходного массива.</td>
+                <td><code>start</code> (индекс начала), <code>end</code> (индекс конца, не включая)</td>
+            </tr>
+            <tr>
+                <td><code>splice()</code></td>
+                <td>Изменяет содержимое массива, удаляя или заменяя существующие элементы и/или добавляя новые.</td>
+                <td><code>start</code> (индекс), <code>deleteCount</code> (количество удаляемых), <code>items</code> (элементы для добавления)</td>
+            </tr>
+            <tr>
+                <td><code>forEach()</code></td>
+                <td>Выполняет заданную функцию один раз для каждого элемента массива.</td>
+                <td><code>callback</code> (функция), <code>thisArg</code> (опционально)</td>
+            </tr>
+            <tr>
+                <td><code>map()</code></td>
+                <td>Создает новый массив с результатами вызова заданной функции для каждого элемента.</td>
+                <td><code>callback</code> (функция), <code>thisArg</code> (опционально)</td>
+            </tr>
+            <tr>
+                <td><code>filter()</code></td>
+                <td>Создает новый массив с элементами, прошедшими тест, заданный функцией.</td>
+                <td><code>callback</code> (функция), <code>thisArg</code> (опционально)</td>
+            </tr>
+            <tr>
+                <td><code>reduce()</code></td>
+                <td>Применяет функцию к каждому элементу массива (слева направо) и возвращает одно значение.</td>
+                <td><code>callback</code> (функция), <code>initialValue</code> (опционально)</td>
+            </tr>
+            <tr>
+                <td><code>reduceRight()</code></td>
+                <td>Применяет функцию к каждому элементу массива (справа налево) и возвращает одно значение.</td>
+                <td><code>callback</code> (функция), <code>initialValue</code> (опционально)</td>
+            </tr>
+            <tr>
+                <td><code>find()</code></td>
+                <td>Возвращает первое значение в массиве, которое удовлетворяет предоставленному тесту.</td>
+                <td><code>callback</code> (функция), <code>thisArg</code> (опционально)</td>
+            </tr>
+            <tr>
+                <td><code>findIndex()</code></td>
+                <td>Возвращает индекс первого элемента в массиве, который удовлетворяет предоставленному тесту.</td>
+                <td><code>callback</code> (функция), <code>thisArg</code> (опционально)</td>
+            </tr>
+            <tr>
+                <td><code>some()</code></td>
+                <td>Проверяет, удовлетворяет ли хотя бы один элемент массива тесту, реализуемому предоставленной функцией.</td>
+                <td><code>callback</code> (функция), <code>thisArg</code> (опционально)</td>
+            </tr>
+            <tr>
+                <td><code>every()</code></td>
+                <td>Проверяет, удовлетворяют ли все элементы массива тесту, реализуемому предоставленной функцией.</td>
+                <td><code>callback</code> (функция), <code>thisArg</code> (опционально)</td>
+            </tr>
+            <tr>
+                <td><code>includes()</code></td>
+                <td>Определяет, содержит ли массив определённое значение, возвращая <code>true</code> или <code>false</code>.</td>
+                <td><code>value</code> (значение для поиска), <code>fromIndex</code> (опционально)</td>
+            </tr>
+            <tr>
+                <td><code>indexOf()</code></td>
+                <td>Возвращает первый индекс, по которому заданное значение может быть найдено в массиве.</td>
+                <td><code>searchElement</code> (значение), <code>fromIndex</code> (опционально)</td>
+            </tr>
+            <tr>
+                <td><code>lastIndexOf()</code></td>
+                <td>Возвращает последний индекс, по которому заданное значение может быть найдено в массиве.</td>
+                <td><code>searchElement</code> (значение), <code>fromIndex</code> (опционально)</td>
+            </tr>
+            <tr>
+                <td><code>join()</code></td>
+                <td>Объединяет все элементы массива в строку, используя указанный разделитель.</td>
+                <td><code>separator</code> (опционально, по умолчанию запятая)</td>
+            </tr>
+            <tr>
+                <td><code>reverse()</code></td>
+                <td>Изменяет порядок расположения элементов массива на противоположный.</td>
+                <td>Нет</td>
+            </tr>
+            <tr>
+                <td><code>sort()</code></td>
+                <td>Сортирует элементы массива на месте и возвращает отсортированный массив.</td>
+                <td><code>compareFunction</code> (опционально)</td>
+            </tr>
+            <tr>
+                <td><code>flat()</code></td>
+                <td>Создает новый массив с подмассивами, распакованными до указанной глубины.</td>
+                <td><code>depth</code> (опционально, по умолчанию 1)</td>
+            </tr>
+            <tr>
+                <td><code>flatMap()</code></td>
+                <td>Сначала отображает каждый элемент массива с помощью функции, затем объединяет результаты в новый массив.</td>
+                <td><code>callback</code> (функция)</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Список фильмов -->
+     <ul id="films">
+        
+     </ul>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="lesson_11.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+/* Семейство шрифтов для заголовков */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Times New Roman';
+  font-weight: bolder;
+  text-shadow: 20px 20px 20px rgb(66, 46, 20);
+}
+
+body {
+    background-color: antiquewhite;
+  }
+  
+.bq {
+font-size: 30px;
+}
+
+.bq-text {
+font-size: 20px;
+font-family: monospace;
+}
+
+blockquote.bq-text {
+text-align: center;
+margin-top: 40px;
+margin-bottom: 40px;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+header {
+position: sticky;
+top: 0;
+background-color: rgb(225, 200, 167);
+padding: 10px;
+}
+
+li {
+    display: inline;
+}
+
+td, th {
+  border: 1px solid black;
+}
+
+table > thead > tr > th {
+  background-color: lightslategrey;
+}
+
+th {
+    background-color: lightblue;
+}
+
+th {
+    background-color: lightsalmon;
+}
+
+/* Схлопнем зазоры между ячеек */
+table {
+  border-collapse: collapse;
+}
+
+tfoot > tr> td {
+  background-color: lightsalmon;
+}
+
+.strip-row {
+    /* background-color: lightgray; */
+}
+
+/* Селекторы child Возможность гибко выбирать наследников, в том формате, в котором нам удобно Кажый второй td в tbody */
+
+/* tbody tr:nth-child(2n) {
+  background-color: lightgray;
+} */
+
+/* Каждый нечетный ребенок
+even - четные
+odd - нечетный
+
+*/
+
+tbody tr:nth-child(odd) {
+    background-color: lightgray;
+}
+
+/* Первый ребенок */
+tbody tr:first-child {
+    font-weight: bold;
+  }
+  
+  /* Последний ребенок */
+  tbody tr:last-child {
+    font-style: italic;
+  }

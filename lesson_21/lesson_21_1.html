@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Блог</title>
+    <style>
+        .post {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 10px;
+            width: 300px;
+            display: inline-block;
+        }
+        .like-btn {
+            cursor: pointer;
+            font-size: 24px;
+        }
+        .liked {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="post">
+        <h2>Пост 1</h2>
+        <p>Содержание поста 1</p>
+        <span class="like-btn" data-post-id="1">♥</span>
+    </div>
+
+    <div class="post">
+        <h2>Пост 2</h2>
+        <p>Содержание поста 2</p>
+        <span class="like-btn" data-post-id="2">♥</span>
+    </div>
+
+    <div class="post">
+        <h2>Пост 3</h2>
+        <p>Содержание поста 3</p>
+        <span class="like-btn" data-post-id="3">♥</span>
+    </div>
+
+    <script>
+        // Находим все кнопки лайков и добавляем обработчик события клика
+        document.querySelectorAll('.like-btn').forEach(button => {
+            button.addEventListener('click', handleLike);
+        });
+
+        // Функция для получения значения cookie по его имени
+        function getCookie(name) {
+            let cookieValue = null;
+            if (document.cookie && document.cookie !== '') {
+                const cookies = document.cookie.split(';');
+                for (let i = 0; i < cookies.length; i++) {
+                    const cookie = cookies[i].trim();
+                    // Проверяем, соответствует ли начало cookie искомому имени
+                    if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        async function handleLike(event) {
+            // Получаем кнопку, на которую кликнули
+            const button = event.target;
+            // Получаем ID поста из data-атрибута
+            const postId = button.dataset.postId;
+            // Переключаем класс 'liked' и получаем текущее состояние
+            const isLiked = button.classList.toggle('liked');
+            
+            // Получаем CSRF-токен из cookie для защиты от CSRF-атак
+            const csrftoken = getCookie('csrftoken');
+            
+            try {
+                // Отправляем POST-запрос на сервер с информацией о лайке
+                const response = await fetch('/api/like/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': csrftoken
+                    },
+                    body: JSON.stringify({
+                        post_id: postId,
+                        is_liked: isLiked
+                    })
+                });
+
+                // Проверяем успешность запроса
+                if (!response.ok) {
+                    throw new Error('Ошибка при отправке лайка');
+                }
+
+                // Получаем и выводим ответ от сервера
+                const data = await response.json();
+                console.log('Успешно:', data);
+                
+            } catch (error) {
+                console.error('Ошибка:', error);
+                // Возвращаем состояние кнопки обратно в случае ошибки
+                // button.classList.toggle('liked');
+            }
+        }
+    </script>
+</body>
+
+</html>

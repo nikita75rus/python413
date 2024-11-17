@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Методы объектов в JavaScript</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>Работа с Объектами</h1>
+    <section>
+      <h2>Методы объектов</h2>
+      <div class="container mt-5">
+        <h1 class="mb-4">Методы объектов в JavaScript</h1>
+        <table class="table table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Метод</th>
+              <th>Описание</th>
+              <th>Аргументы</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <code>Object.keys()</code> / <code>Object.values()</code> /
+                <code>Object.entries()</code>
+              </td>
+              <td>
+                Возвращают массив ключей, значений или пар ключ-значение объекта
+              </td>
+              <td>Объект</td>
+            </tr>
+            <tr>
+              <td><code>Object.assign()</code></td>
+              <td>
+                Копирует свойства из одного или нескольких исходных объектов в
+                целевой объект
+              </td>
+              <td>Целевой объект, исходные объекты</td>
+            </tr>
+            <tr>
+              <td><code>Object.create()</code></td>
+              <td>Создает новый объект с указанным прототипом и свойствами</td>
+              <td>
+                Объект-прототип, объект с дескрипторами свойств (необязательно)
+              </td>
+            </tr>
+            <tr>
+              <td><code>Object.freeze()</code> / <code>Object.seal()</code></td>
+              <td>
+                Делают объект неизменяемым или запрещают добавление/удаление
+                свойств
+              </td>
+              <td>Объект</td>
+            </tr>
+            <tr>
+              <td>
+                <code>Object.defineProperty()</code> /
+                <code>Object.defineProperties()</code>
+              </td>
+              <td>
+                Определяют новое или изменяют существующее свойство объекта
+              </td>
+              <td>
+                Объект, имя свойства, дескриптор свойства (или объект с
+                дескрипторами)
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <code>Object.getOwnPropertyDescriptor()</code> /
+                <code>Object.getOwnPropertyDescriptors()</code>
+              </td>
+              <td>
+                Возвращают дескриптор свойства или все дескрипторы свойств
+                объекта
+              </td>
+              <td>Объект, имя свойства (для getOwnPropertyDescriptor)</td>
+            </tr>
+            <tr>
+              <td><code>Object.is()</code></td>
+              <td>Определяет, являются ли два значения одним и тем же</td>
+              <td>Два значения для сравнения</td>
+            </tr>
+            <tr>
+              <td><code>Object.hasOwnProperty()</code></td>
+              <td>
+                Проверяет, содержит ли объект указанное свойство как собственное
+              </td>
+              <td>Строка с именем свойства</td>
+            </tr>
+            <tr>
+              <td>
+                <code>Object.getPrototypeOf()</code> /
+                <code>Object.setPrototypeOf()</code>
+              </td>
+              <td>Получают или устанавливают прототип объекта</td>
+              <td>Объект (и новый прототип для setPrototypeOf)</td>
+            </tr>
+            <tr>
+              <td>
+                <code>Object.preventExtensions()</code> /
+                <code>Object.isExtensible()</code>
+              </td>
+              <td>
+                Запрещают/проверяют возможность добавления новых свойств к
+                объекту
+              </td>
+              <td>Объект</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="lesson_12.js"></script>
+  </body>
+</html>

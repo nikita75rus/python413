@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<!-- 
+FORM - тег открывающий форму
+form-action = Маршрут, по которому будет отправлен 
+form-method = Метод, которым будет отправлен запрос
+POST = данные в теле запроса
+GET = данные в строке запроса в формате ?ключ1=значение1&ключ2=значение2
+
+
+input = Тег для для создания поля ввода
+name = "имя", или название ключа для будущего запроса
+
+type = тип поля ввода (text, email, password, number, tel, url, date, time, datetime-local, month, week, color, range, search, checkbox, radio, file, hidden, image, submit, reset, button)
+
+placeholder = подсказка в поле ввода
+value = значение по умолчанию
+
+
+
+pattern - возможность добавить регулярное выражение для проверки данных
+required - обязательность заполнения данного поля
+-->
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lesson 5</title>
+    <style>
+      input {
+        width: 50%;
+      }
+        form div {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+ 
+    <form action="" method="POST">
+        <div>
+        <!-- <label for="username">Пользователь</label> -->
+        <input type="text" name="username" placeholder="Введите юзернейм" value="Тут уже кто-то напечатал..." id="username" required>
+    </div>
+    <div>
+        <!-- <label for="password">Пароль</label> -->
+        <input type="password" name="password" placeholder="Введите пароль" id="password" required
+        pattern="[A-Za-z0-9]{6,12}" title="Пароль от 6 до 12 знаков, англ. буквы и цифры">
+    </div>
+
+      <!-- <input type="submit" value="Отправить"> -->
+      <div>
+       <button type="submit">Отправить</button>
+    </div>
+    </form>
+</body>
+</html>
+

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bootstrap demo</title>
+    <!-- Подключение стилей Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container mt-5">
+      <section class="json-rules">
+        <div class="card">
+          <div class="card-header bg-primary text-white">
+            <h2>Синтаксические правила JSON</h2>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Основные требования:</h5>
+            <ul class="list-group mb-4">
+              <li class="list-group-item">Ключи всегда в <code>"двойных кавычках"</code></li>
+              <li class="list-group-item">
+                Строковые значения только в <code>"двойных кавычках"</code>
+              </li>
+              <li class="list-group-item">Не поддерживает <code>комментарии</code></li>
+              <li class="list-group-item">Не допускает <code>undefined</code> и <code>функции</code></li>
+              <li class="list-group-item">Запрещены висячие <code>запятые</code></li>
+            </ul>
+
+            <h5 class="card-title">Допустимые типы данных:</h5>
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="list-group">
+                  <li class="list-group-item"><code>String</code> (Строки)</li>
+                  <li class="list-group-item"><code>Number</code> (Числа)</li>
+                  <li class="list-group-item"><code>Boolean</code> (<code>true</code>/<code>false</code>)</li>
+                  <li class="list-group-item"><code>null</code></li>
+                  <li class="list-group-item"><code>Array</code> (Массивы)</li>
+                  <li class="list-group-item"><code>Object</code> (Объекты)</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <div class="alert alert-info">
+                  <strong>Пример валидного JSON:</strong>
+                  <pre><code>{
+        "name": "John",
+        "age": 30,
+        "city": "New York",
+        "isStudent": false,
+        "hobbies": ["reading", "sports"]
+    }</code></pre>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="cookies-crud mt-5">
+        <div class="card">
+          <div class="card-header bg-success text-white">
+            <h2>Работа с Cookies (CRUD операции)</h2>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Основные операции:</h5>
+            <div class="row">
+              <div class="col-md-6">
+                <ul class="list-group mb-4">
+                  <li class="list-group-item">
+                    <strong>Create:</strong><br>
+                    <code>document.cookie = "username=John; expires=Thu, 18 Dec 2024 12:00:00 UTC; path=/";</code>
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Read (все куки):</strong><br>
+                    <code>let cookies = document.cookie;</code>
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Update:</strong><br>
+                    <code>document.cookie = "username=Jane; expires=Thu, 18 Dec 2024 12:00:00 UTC; path=/";</code>
+                  </li>
+                  <li class="list-group-item">
+                    <strong>Delete:</strong><br>
+                    <code>document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";</code>
+                  </li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <div class="alert alert-info">
+                  <strong>Получение конкретной куки:</strong>
+                  <pre><code>function getCookie(name) {
+          let matches = document.cookie.split('; ')
+              .map(cookie => cookie.split('='));
+          let cookie = matches.find(item => 
+              item[0] === name);
+          return cookie ? 
+              decodeURIComponent(cookie[1]) : 
+              undefined;
+      }</code></pre>
+                </div>
+                <div class="alert alert-warning">
+                  <strong>Параметры куки:</strong>
+                  <ul class="list-unstyled mb-0">
+                    <li><code>path</code> - путь доступности</li>
+                    <li><code>expires</code> - срок действия</li>
+                    <li><code>secure</code> - только HTTPS</li>
+                    <li><code>samesite</code> - защита от CSRF</li>
+                    <li><code>domain</code> - домен доступности</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="promises-explanation mt-5">
+        <div class="card">
+            <div class="card-header bg-warning text-white">
+                <h2>Промисы в JavaScript</h2>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Что такое промисы?</h5>
+                <p class="card-text">
+                    Промисы — это объект в JavaScript, который представляет собой результат асинхронной операции. Они позволяют работать с асинхронным кодом более удобно и избегать "колбэк-ада".
+                </p>
+                <h5 class="card-title">Состояния промиса:</h5>
+                <ul class="list-group mb-4">
+                    <li class="list-group-item"><code>Pending</code> (ожидание) — начальное состояние</li>
+                    <li class="list-group-item"><code>Fulfilled</code> (выполнено успешно) — операция завершена успешно</li>
+                    <li class="list-group-item"><code>Rejected</code> (выполнено с ошибкой) — операция завершена с ошибкой</li>
+                </ul>
+                <h5 class="card-title">Использование <code>then</code>:</h5>
+                <p class="card-text">
+                    Метод <code>then</code> используется для обработки успешного выполнения промиса. Вы можете использовать несколько <code>then</code> для последовательной обработки данных.
+                </p>
+                <div class="alert alert-info">
+                    <strong>Пример:</strong>
+                    <pre><code>fetch('https://api.example.com/data')
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));</code></pre>
+                </div>
+                <h5 class="card-title">Разделение на части:</h5>
+                <p class="card-text">
+                    Вы можете разделить обработку промиса на несколько частей, сохраняя промежуточные результаты в переменные. Это позволяет более гибко управлять асинхронными операциями.
+                </p>
+                <div class="alert alert-info">
+                    <strong>Пример с разделением:</strong>
+                    <pre><code>let weather = fetch(url).then(response => response.json());
+    console.log('ТЕСТ, сейчас будет погода... 3, 2, 1 ПУСК!');
+    weather.then(data => console.log(data));</code></pre>
+                </div>
+                <button class="btn btn-dark mt-3" onclick="displayWeather()">Погоду в консоль!</button>
+            </div>
+            
+        </div>
+        
+    </section>
+    
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <script src="lesson_19.js"></script>
+  </body>
+</html>

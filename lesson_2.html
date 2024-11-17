@@ -1,0 +1,123 @@
+<!-- Lesson 1
+Вторая строка 
+-->
+<!DOCTYPE html>
+<html lang="en">
+    <!--  -->
+  <head>
+    <!-- Meta - тег, который содержит информацию о странице
+     viewport - это размер окна браузера, который будет отображаться на экране
+     keywords - ключевые слова, которые будут отображаться в поисковике
+     description - описание страницы, которое будет отображаться в поисковике
+     -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="урок, html, верстка, базовые теги" />
+    <meta
+      name="description"
+      content="Первый урок годового курса по Python backend разработке"
+    />
+    <!-- Title - тег, который содержит название вкладки
+      -->
+    <title>Lesson 1</title>
+    <style>
+
+        html {
+            font-size: 30px;
+        }
+        img {
+            width: 300px;
+            border-radius: 10%;
+            border: 2px solid rgba(90, 22, 145);
+            box-shadow: 0 0 20px 10px brown;
+        }
+
+        h1 {
+
+            color: lightcoral;
+            text-align: center;
+            font-family: monospace;
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        h1, h2 {
+            text-shadow: 0 0 10px red;
+        }
+
+        li {
+            text-decoration: underline;
+        }
+
+        /* Нумерованный римскими цифрами */
+        ol {
+            list-style-type: upper-roman;
+        }
+
+        #moreFacts {
+            color: rgb(0, 255, 127);
+        }
+        
+        .red {
+            color: red;
+        }
+
+       
+        
+      
+        
+
+        li.red {
+            color: red;
+            font-weight: bold;
+        }
+
+        .paragraph {
+            color: green !important;
+        }
+        
+    </style>
+  </head>
+  <body>
+  
+    <h1>Владимир Монин &#128526;</h1>
+    <h2>Кратко:</h2>
+    <h2>Кратко:</h2>
+    <h2>Кратко:</h2>
+    <div>
+      <img src="./media/my_photo.jpg" alt="Фотография автора анкеты">
+      <img src="./media/my_photo.jpg" alt="Фотография автора анкеты">
+    </div>
+    <div><img src="./media/my_photo.jpg" alt="Фотография автора анкеты"></div>
+    <img src="./media/my_photo.jpg" alt="Фотография автора анкеты">
+    <img src="./media/my_photo.jpg" alt="Фотография автора анкеты">
+    <img src="./media/my_photo.jpg" alt="Фотография автора анкеты">
+    <img src="./media/my_photo.jpg" alt="Фотография автора анкеты">
+    <p class="paragraph">
+      <!-- http://127.0.0.1:5500/ -->
+      Начал изучать Python примерно в 2018 году и получил свой первый
+      <b style="color:aqua">Hello World!</b>
+    </p>
+    <p class="paragraph red">
+      Сейчас умею верстать простые странички и сайты, с использованием HTML,
+      CSS, BS5, и JavaScript.
+    </p>
+    <p>
+      По образованию я бакалавр экономики, и имею степень магистра в
+      менеджменте, но <b><i>всегда хотел изучать программирование</i></b> &#129299;
+      <h2 id="moreFacts">Еще несколько фактов:</h2>
+      <ol>
+        <li class="red">Долго жил в Крыму, пережил референдум и после развода вернулся на родину, в 2020 г.</li>
+        <li>
+            Активно изучал программирование более 2х лет
+        </li>
+        <li>Смотрю в сторону FullStack и изучаю VueJS</li>
+        <Li class="red paragraph">Катаюсь на велосипеде и хожу в бассейн</Li>
+        <li>Люблю котиков. У меня их два.</li>
+      </ol>
+    </p>
+  </body>
+</html>

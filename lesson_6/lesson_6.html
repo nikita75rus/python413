@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Единицы величин в CSS</title>
+    <style>
+      html {
+        font-size: 20px;
+        /* font-size: 1.1vw; */
+      }
+
+      h2 {
+        font-size: 1.6em;
+      }
+      table {
+        min-width: 700px;
+        width: 90vw;
+        margin-left: 5vw;
+        margin-right: 5vw;
+        border-collapse: collapse;
+        margin-top: 5vh;
+        border: 5px solid black;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 12px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      tr:hover {
+        background-color: #f5f5f5;
+      }
+
+      div.container-1 {
+        border: 2px solid black;
+        background-color: azure;
+        display: flex;
+        flex-direction: column;
+        /* Выравнивание по оси X */
+        justify-content: start;
+        /* Выравнивание по оси Y */
+        align-items: start;
+        /* Позволим перенос */
+        flex-wrap: wrap;
+        /* Высота блока */
+        height: 30rem;
+      }
+
+      div.container-1 > div {
+        background-color: bisque;
+        width: 5rem;
+        height: 5rem;
+        margin: 10px;
+        /* padding: 20px; */
+        text-align: center;
+        line-height: 5rem;
+        display: inline-block;
+      }
+
+      div.container-2 {
+        display: flex;
+        border: 2px solid black;
+        background-color: lightblue;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        align-items: center;
+        min-height: 30rem;
+      }
+
+      div.container-2 > article {
+        margin: 20px;
+        background-color: bisque;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+      div.container-2 > article img {
+        width: 100%;
+        height: 350px;
+        object-fit: cover;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+      }
+
+      div.container-2 > article .text-block {
+        padding: 10px;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      div.container-2 > article h3 {
+        font-size: 1.8em;
+        margin: 0;
+        text-align: center;
+      }
+
+      div.container-2 > article p {
+        font-size: 1.3em;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <tr>
+        <th>Единица</th>
+        <th>Расшифровка</th>
+      </tr>
+      <tr>
+        <td><code>px</code></td>
+        <td>
+          Пиксели. Абсолютная единица измерения, которая определяет точное
+          количество пикселей на экране. Один пиксель соответствует одной точке
+          на экране устройства. Это наиболее распространенная единица измерения
+          в веб-дизайне, особенно для определения размеров шрифтов и элементов с
+          фиксированными размерами. Однако при использовании пикселей следует
+          учитывать, что они могут по-разному отображаться на устройствах с
+          разным разрешением экрана.
+        </td>
+      </tr>
+      <tr>
+        <td><code>%</code></td>
+        <td>
+          Проценты. Относительная единица измерения, которая определяет размер
+          элемента относительно размера его родительского элемента. Например,
+          если задать ширину элемента 50%, он будет занимать половину ширины
+          родительского элемента. Проценты часто используются для создания
+          адаптивного дизайна, так как позволяют элементам изменять свои размеры
+          пропорционально размеру контейнера или экрана устройства.
+        </td>
+      </tr>
+      <tr>
+        <td><code>em</code></td>
+        <td>
+          Относительная единица измерения, основанная на размере шрифта
+          родительского элемента. Один em равен текущему размеру шрифта. Если
+          размер шрифта родительского элемента 16px, то 1em будет равен 16px,
+          2em - 32px и т.д. Em удобно использовать для создания масштабируемых
+          дизайнов, где размеры элементов пропорциональны размеру шрифта. Однако
+          следует учитывать, что значения em могут накапливаться при вложенности
+          элементов.
+        </td>
+      </tr>
+      <tr>
+        <td><code>rem</code></td>
+        <td>
+          Root EM. Относительная единица измерения, подобная em, но основанная
+          на размере шрифта корневого элемента (обычно
+          <code>&lt;html&gt;</code>). В отличие от em, rem всегда относится к
+          размеру шрифта корня, что делает его более предсказуемым при
+          использовании в сложных структурах с множеством вложенных элементов.
+          Rem часто используется для создания согласованных и легко
+          масштабируемых дизайнов.
+        </td>
+      </tr>
+      <tr>
+        <td><code>vh</code></td>
+        <td>
+          Viewport Height. Относительная единица измерения, равная 1% высоты
+          области просмотра (viewport). 100vh соответствует полной высоте
+          экрана. Эта единица измерения особенно полезна для создания
+          полноэкранных секций или элементов, которые должны занимать
+          определенную часть высоты экрана независимо от размера устройства. Vh
+          часто используется в современных, отзывчивых дизайнах.
+        </td>
+      </tr>
+      <tr>
+        <td><code>vw</code></td>
+        <td>
+          Viewport Width. Относительная единица измерения, равная 1% ширины
+          области просмотра. 100vw соответствует полной ширине экрана. Подобно
+          vh, vw используется для создания элементов, размер которых зависит от
+          ширины экрана устройства. Эта единица измерения полезна для создания
+          адаптивных макетов и элементов, которые должны масштабироваться
+          пропорционально ширине экрана.
+        </td>
+      </tr>
+    </table>
+    <h2>Внутренние и внешние отступы</h2>
+    <div class="padding-margin-info">
+      <h3>Margin и Padding</h3>
+      <p>
+        <code>margin</code> - это внешний отступ элемента, который определяет
+        расстояние от границ элемента до соседних элементов.
+      </p>
+      <p>
+        <code>padding</code> - это внутренний отступ элемента, который
+        определяет расстояние от границ элемента до его содержимого.
+      </p>
+
+      <h3>Способы задания отступов</h3>
+      <p>Отступы можно задавать несколькими способами:</p>
+      <ul>
+        <li>
+          <strong>Одно значение:</strong> <code>margin: 10px;</code> или
+          <code>padding: 10px;</code> - применяется ко всем сторонам.
+        </li>
+        <li>
+          <strong>Два значения:</strong> <code>margin: 10px 20px;</code> -
+          первое значение для верхнего и нижнего отступов, второе для левого и
+          правого.
+        </li>
+        <li>
+          <strong>Три значения:</strong> <code>padding: 10px 20px 30px;</code> -
+          первое для верхнего, второе для левого и правого, третье для нижнего
+          отступа.
+        </li>
+        <li>
+          <strong>Четыре значения:</strong>
+          <code>margin: 10px 20px 30px 40px;</code> - задаются отступы для
+          верхней, правой, нижней и левой сторон соответственно (по часовой
+          стрелке).
+        </li>
+      </ul>
+
+      <p>
+        Использование разных способов задания отступов позволяет гибко
+        настраивать расположение элементов на странице и их внутреннее
+        оформление.
+      </p>
+    </div>
+    <h2><code>Div</code> блоки и отступы</h2>
+    <div class="container-1">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+    </div>
+    <h2>Более сложный пример с лягушками</h2>
+    <div class="container-2">
+      <article>
+        <img src="1.jpg" alt="Лягушка №1" />
+        <div class="text-block">
+          <h3>Лягушка №1</h3>
+          <p>Описание лягушки №1.</p>
+        </div>
+      </article>
+      <article>
+        <img src="2.jpg" alt="Лягушка №2" />
+        <div class="text-block">
+          <h3>Лягушка №2</h3>
+          <p>Описание лягушки №2.</p>
+        </div>
+      </article>
+      <article>
+        <img src="3.jpg" alt="Лягушка №3" />
+        <div class="text-block">
+          <h3>Лягушка №3</h3>
+          <p>Описание лягушки №3.</p>
+        </div>
+      </article>
+    </div>
+    <iframe
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/XBpNNmvfuuI?si=TZbAaBJbIIVnpykO"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+    ></iframe>
+  </body>
+</html>

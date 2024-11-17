@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Урок 17</title>
+  
+<style>
+    nav {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    width: 300px;
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  #navUl {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #navUl li {
+    margin-bottom: 10px;
+  }
+
+  #navUl a {
+    display: block;
+    padding: 8px 12px;
+    color: #333;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  #navUl a:hover {
+    background: #e9ecef;
+    color: #007bff;
+    transform: translateX(5px);
+  }
+
+  .container {
+    margin-left: 340px;
+  }
+</style>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  
+  <body>
+    <nav>
+      <ul id="navUl"></ul>
+    </nav>
+    <!-- <h1 class="text-center">Урок 17</h1> -->
+    <!-- Комментарий -->
+    <p id='text'>Параграф с текстом</p>
+    <p id='text2'>Параграф с текстом</p>
+
+    <hr>
+
+    <div class="container mt-5">
+      <h1 class="text-center mb-4">Заметка по Lesson 17</h1>
+      
+      <h2>HTMLCollection и NodeList</h2>
+      <p>
+        <code>HTMLCollection</code> - это живая коллекция элементов, которая автоматически обновляется при изменении DOM.
+        В отличие от него, <code>NodeList</code> является статичной коллекцией узлов и не обновляется автоматически при изменениях.
+      </p>
+      
+      <h2>Основные отличия</h2>
+      <ul>
+        <li><strong>HTMLCollection</strong> содержит только элементы, тогда как <strong>NodeList</strong> может содержать любые узлы DOM.</li>
+        <li><strong>HTMLCollection</strong> является живой коллекцией, в то время как <strong>NodeList</strong> статична (за исключением <code>childNodes</code>).</li>
+        <li><strong>NodeList</strong> предоставляет больше методов для работы с элементами.</li>
+        <li><strong>HTMLCollection</strong> можно получить через методы <code>getElementsBy...</code>, а <strong>NodeList</strong> через <code>querySelectorAll</code>.</li>
+      </ul>
+      
+      <h2>Методы получения коллекций</h2>
+      <p>Существуют различные способы получения коллекций элементов в DOM:</p>
+      <h3>HTMLCollection</h3>
+      <ul>
+        <li><code>document.getElementsByTagName('tag')</code> - получает элементы по имени тега.</li>
+        <li><code>document.getElementsByClassName('class')</code> - получает элементы по имени класса.</li>
+        <li><code>document.getElementsByName('name')</code> - получает элементы по атрибуту name.</li>
+        <li><code>document.forms</code> - получает все формы на странице.</li>
+        <li><code>document.images</code> - получает все изображения.</li>
+        <li><code>document.links</code> - получает все ссылки.</li>
+        <li><code>element.children</code> - получает дочерние элементы.</li>
+        <li><code>document.childNodes</code> - получает все дочерние узлы документа (живая коллекция).</li>
+        <li><code>parentNode.childNodes</code> - получает все дочерние узлы элемента (живая коллекция).</li>
+      </ul>
+      
+      <h3>NodeList</h3>
+      <ul>
+        <li><code>document.querySelectorAll('selector')</code> - получает элементы по CSS селектору.</li>
+        <li><code>element.querySelectorAll('selector')</code> - получает элементы внутри указанного элемента по CSS селектору.</li>
+      </ul>
+      
+      <h3>Методы для поиска одиночного элемента</h3>
+      <ul>
+        <li><code>document.getElementById('id')</code> - получает элемент по ID.</li>
+        <li><code>document.querySelector('selector')</code> - получает первый элемент по CSS селектору.</li>
+        <li><code>element.querySelector('selector')</code> - получает первый элемент внутри указанного элемента по CSS селектору.</li>
+      </ul>
+      
+      <h2>Навигация по DOM дереву</h2>
+      <h3>Родственные узлы</h3>
+      <ul>
+        <li><code>element.parentNode</code> - получает родительский узел.</li>
+        <li><code>element.parentElement</code> - получает родительский элемент.</li>
+        <li><code>element.closest('selector')</code> - находит ближайший родительский элемент, подходящий под CSS селектор.</li>
+      </ul>
+      
+      <h3>Дочерние узлы</h3>
+      <ul>
+        <li><code>element.childNodes</code> - получает все дочерние узлы.</li>
+        <li><code>element.children</code> - получает все дочерние элементы.</li>
+        <li><code>element.firstChild</code> - получает первый дочерний узел.</li>
+        <li><code>element.firstElementChild</code> - получает первый дочерний элемент.</li>
+        <li><code>element.lastChild</code> - получает последний дочерний узел.</li>
+        <li><code>element.lastElementChild</code> - получает последний дочерний элемент.</li>
+      </ul>
+      
+      <h3>Соседние элементы</h3>
+      <ul>
+        <li><code>element.previousSibling</code> - получает предыдущий узел.</li>
+        <li><code>element.previousElementSibling</code> - получает предыдущий элемент.</li>
+        <li><code>element.nextSibling</code> - получает следующий узел.</li>
+        <li><code>element.nextElementSibling</code> - получает следующий элемент.</li>
+      </ul>
+      
+      <h3>Проверка наличия</h3>
+      <ul>
+        <li><code>element.hasChildNodes()</code> - проверяет наличие дочерних узлов.</li>
+        <li><code>element.contains(elem)</code> - проверяет, содержит ли элемент внутри себя другой элемент <code>elem</code>.</li>
+      </ul>
+      
+      <h2>Разница между Node и Element</h2>
+      <p>
+        <strong>Node</strong> - это более общее понятие, включающее в себя:
+        <ul>
+          <li>текстовые узлы (просто текст)</li>
+          <li>узлы комментариев <code>&lt;!-- --&gt;</code></li>
+          <li>элементы (теги HTML)</li>
+          <li>документ и его фрагменты</li>
+          <li>пробелы и переносы строк между тегами</li>
+        </ul>
+      </p>
+      <p>
+        <strong>Element</strong> - это только HTML теги. Например:
+        <pre><code>&lt;div&gt;Привет &lt;b&gt;мир&lt;/b&gt;!&lt;/div&gt;</code></pre>
+        В этом примере:
+        <ul>
+          <li><code>div</code> является элементом и узлом.</li>
+          <li>Текст "Привет" является текстовым узлом.</li>
+          <li><code>b</code> является элементом и узлом.</li>
+          <li>Текст "мир" является текстовым узлом.</li>
+          <li>Текст "!" является текстовым узлом.</li>
+        </ul>
+      </p>
+      
+      <h2>Работа с элементами</h2>
+      <h3>Создание элементов</h3>
+      <ul>
+        <li><code>document.createElement("tag_name")</code> - создает HTML элемент.</li>
+        <li><code>document.createTextNode(text)</code> - создает текстовый узел.</li>
+      </ul>
+      
+      <h3>Добавление элементов</h3>
+      <ul>
+        <li><code>parent.appendChild(element)</code> - добавляет элемент в конец родителя.</li>
+        <li><code>parent.insertBefore(element, nextSibling)</code> - вставляет элемент перед указанным соседом.</li>
+        <li><code>parent.append(...elements)</code> - добавляет элементы в конец родителя.</li>
+        <li><code>parent.prepend(...elements)</code> - добавляет элементы в начало родителя.</li>
+        <li><code>parent.before(...elements)</code> - вставляет элементы перед родителем.</li>
+        <li><code>parent.after(...elements)</code> - вставляет элементы после родителя.</li>
+      </ul>
+      
+      <h3>Удаление элементов</h3>
+      <ul>
+        <li><code>element.remove()</code> - удаляет элемент.</li>
+        <li><code>parent.removeChild(element)</code> - удаляет дочерний элемент.</li>
+      </ul>
+      
+      <h3>Замена элементов</h3>
+      <ul>
+        <li><code>parent.replaceChild(newElement, oldElement)</code> - заменяет <code>oldElement</code> на <code>newElement</code>.</li>
+        <li><code>element.replaceWith(newElement)</code> - заменяет элемент на <code>newElement</code>.</li>
+      </ul>
+      
+      <h3>Работа с классами</h3>
+      <ul>
+        <li><code>element.classList.add('class')</code> - добавляет класс.</li>
+        <li><code>element.classList.remove('class')</code> - удаляет класс.</li>
+        <li><code>element.classList.toggle('class')</code> - переключает класс (добавляет, если нет, удаляет, если есть).</li>
+        <li><code>element.classList.contains('class')</code> - проверяет наличие класса.</li>
+        <li><code>element.className</code> - получает или устанавливает все классы строкой.</li>
+      </ul>
+      
+      <h3>Работа с содержимым</h3>
+      <ul>
+        <li><code>element.innerHTML</code> - получает или устанавливает HTML-содержимое.</li>
+        <li><code>element.outerHTML</code> - получает или устанавливает HTML-содержимое, включая сам элемент.</li>
+        <li><code>element.textContent</code> - получает или устанавливает текстовое содержимое.</li>
+        <li><code>element.innerText</code> - получает или устанавливает отображаемый текст (учитывает стили).</li>
+      </ul>
+      
+      <h3>Работа с атрибутами</h3>
+      <ul>
+        <li><code>element.setAttribute(name, value)</code> - устанавливает атрибут.</li>
+        <li><code>element.getAttribute(name)</code> - получает значение атрибута.</li>
+        <li><code>element.removeAttribute(name)</code> - удаляет атрибут.</li>
+        <li><code>element.hasAttribute(name)</code> - проверяет наличие атрибута.</li>
+        <li><code>element.attributes</code> - получает все атрибуты.</li>
+      </ul>
+
+      <h2 theme="methodsTable">Таблица методов</h2>
+      
+      <h2>Кнопка и события</h2>
+      <button id="buttonStart" class="btn btn-warning">Жмякни</button>
+    </div>
+    
+
+    
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="lesson_17.js"></script>
+</body>
+</html>
