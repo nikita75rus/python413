@@ -89,7 +89,7 @@
 // console.log(x > y || y < z && z > x); // true
 // console.log((x > y || y < z) && z > x); // true
 // console.log('Спорное выражение')
-// TODO КАК ЧЕРТ ВОЗЬМИ  ЭТО ДАЕТ false!?
+// 
 // console.log(x > (y || y < z) && z > x); // false
 
 // // Пример 3

@@ -92,6 +92,11 @@ function addMessageToChat(content, isUser) {
     const messageElement = createMessageElement(content, isUser);
     chatMessages.appendChild(messageElement);
     chatMessages.scrollTop = chatMessages.scrollHeight;
+
+    // Если это сообщение от ИИ, добавляем кнопки копирования
+    if (!isUser) {
+        addCodeCopyButtons(messageElement);
+    }
 }
 
 // Функция обработки отправки формы
@@ -122,5 +127,42 @@ function initChat() {
     userInput.focus();
 }
 
+
+function addCodeCopyButtons(container) {
+    container.querySelectorAll("pre").forEach((preBlock) => {
+        preBlock.classList.add("pre-container");
+        const copyButton = createCopyButton();
+        preBlock.appendChild(copyButton);
+        copyButton.addEventListener(
+            "click",
+            handleCopyButtonClick.bind(null, preBlock, copyButton)
+        );
+    });
+}
+
+function createCopyButton() {
+    const btn = document.createElement("i");
+    btn.classList.add("bi", "bi-clipboard", "code-copy-btn");
+    return btn;
+}
+
+function handleCopyButtonClick(preBlock, copyButton) {
+    const codeContent = preBlock.querySelector("code").innerText;
+    navigator.clipboard.writeText(codeContent).then(() => {
+        toggleCopyIcon(copyButton, true);
+        setTimeout(() => toggleCopyIcon(copyButton, false), 3000);
+    });
+}
+
+function toggleCopyIcon(copyButton, copied) {
+    copyButton.classList.toggle("bi-clipboard", !copied);
+    copyButton.classList.toggle("bi-clipboard-check", copied);
+    copyButton.style.color = copied ? "lightgreen" : "white";
+}
+
+
 // Запуск чата
 initChat();
+
+
+
