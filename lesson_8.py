@@ -5,8 +5,16 @@
 1. Сеты. Хеширование и рандом на практике (орел решка)
 2. Методы сетов (анализ коллекции фильмов)
 3. Знакомство со словарями
+4. Что может быть ключем словаря
+5. Хеширование ключей и уникальные записи
+6. Создание пустого словаря. Внесение записей
+7.
 
 """
+
+import random
+from pprint import pprint
+from marvel import small_dict
 
 # PRACTICE Орел Решка на сетах
 """
@@ -18,7 +26,7 @@
 """
 # coin_set = {"орел", "решка"}
 # print(coin_set.pop())
-import random
+
 
 THROUGHOUT = 100
 coin_list = ["орел", "решка"]
@@ -100,11 +108,28 @@ print(new_set)
 new_set.discard("коньяк")
 print(new_set)
 
-my_movies = {"Терминатор", "Матрица", "Начало", "Гладиатор", "Бойцовский клуб", "Престиж", "Интерстеллар"}
-wife_movies = {"Титаник", "Дневник памяти", "Престиж", "Интерстеллар", "Ла-Ла Ленд", "Гордость и предубеждение"}
+my_movies = {
+    "Терминатор",
+    "Матрица",
+    "Начало",
+    "Гладиатор",
+    "Бойцовский клуб",
+    "Престиж",
+    "Интерстеллар",
+}
+wife_movies = {
+    "Титаник",
+    "Дневник памяти",
+    "Престиж",
+    "Интерстеллар",
+    "Ла-Ла Ленд",
+    "Гордость и предубеждение",
+}
 
 # difference - или оператор - возвращает разницу между множествами
-print(my_movies - wife_movies) # {'Начало', 'Терминатор', 'Гладиатор', 'Матрица', 'Бойцовский клуб'}
+print(
+    my_movies - wife_movies
+)  # {'Начало', 'Терминатор', 'Гладиатор', 'Матрица', 'Бойцовский клуб'}
 
 # intersection - или оператор & возвращает пересечение множеств
 print(my_movies & wife_movies)  # {'Интерстеллар', 'Престиж'}
@@ -112,7 +137,7 @@ print(my_movies & wife_movies)  # {'Интерстеллар', 'Престиж'}
 
 # symmetric_difference - или оператор ^ возвращает симметричную разность множеств (элементы, которые есть только в одном из множеств)
 print(my_movies ^ wife_movies)
- # {'Матрица', 'Гордость и предубеждение', 'Титаник', 'Дневник памяти', 'Терминатор', 'Гладиатор', 'Ла-Ла Ленд', 'Бойцовский клуб', 'Начало'}
+# {'Матрица', 'Гордость и предубеждение', 'Титаник', 'Дневник памяти', 'Терминатор', 'Гладиатор', 'Ла-Ла Ленд', 'Бойцовский клуб', 'Начало'}
 
 # union - или оператор | возвращает объединение множеств
 print(my_movies | wife_movies)
@@ -134,7 +159,144 @@ print(small_even.issubset(all_even))  # True
 print(all_even.issuperset(small_even))  # True
 
 
+# СЛОВАРИ - dict
+# Словарь - это упорядоченная коллекция данных, состоящая из пар ключ-значение.
+
+some_dict = {}
+some_dict = dict()
+
+some_dict = {
+    "key1": "value1",
+    "key2": "value2",
+    "key3": "value3",
+}
+
+person_dict = {
+    "name": "Никита",
+    "age": 20,
+    "is_student": True,
+}
+
+# Добавим запись
+person_dict["is_married"] = False
+
+person_dict["age"] = 21
+
+print(person_dict)
+
+# PRACTICE - проверка на палиндром резульат в Словарь
+words = ["мадам", "топот", "test"]
+palindromes = {}
+"""
+Напишите программу, которая находит все палиндромы в списке и сохраняет их в словаре, где ключом будет исходное слово, а значением - bool.
+"""
+
+# for word in words:
+#     if word == word[::-1]:
+#         palindromes[word] = True
+#     else:
+#         palindromes[word] = False
+
+
+for word in words:
+    palindromes[word] = word == word[::-1]
+
+palindromes = {word: word == word[::-1] for word in words}
+
+
+palindromes = []
+
+for word in words:
+    result = {
+        "word": word,  # ключ word - значение это исходное слово
+        "is_palindrome": word == word[::-1],  # результат
+    }
+    palindromes.append(result)
+
+
+pprint(palindromes)
+
+person_dict = {
+    "name": "Никита",
+    "age": 20,
+    "is_student": True,
+}
+
+print(person_dict)
+# {'name': 'Никита', 'age': 20, 'is_student': True}
+
+
+pprint(person_dict)
+# {'age': 20, 'is_student': True, 'name': 'Никита'}
+
+
+pprint(person_dict, sort_dicts=False)
+# {'name': 'Никита', 'age': 20, 'is_student': True}
+
+# Методы словарей
+"""
+len(dict) - возвращает количество элементов в словаре
+for - итерация по ключам словаря
+in - проверяет, есть ли ключ в словаре
+get(key, default=None) - возвращает значение ключа, если ключ существует, иначе возвращает default
+items() - возвращает пары ключ-значение в виде списка кортежей
+keys() - возвращает список ключей
+values() - возвращает список значений
+update(other) - обновляет словарь, добавляя пары ключ-значение из other
+clear() - удаляет все элементы из словаря
+copy() - возвращает копию словаря
+fromkeys(iterable, value=None) - возвращает словарь с ключами из iterable и значением value
+pop(key, default=None) - удаляет ключ и возвращает значение, если ключ существует, иначе возвращает default
+popitem() - удаляет и возвращает последнюю пару ключ-значение
+setdefault - возвращает значение ключа, если ключ существует, иначе добавляет ключ с значением default
+"""
+
+person_dict = {
+    "name": "Никита",
+    "age": 20,
+    "is_student": True,
+}
+
+person_dict["is_married"] = False
+person_dict["age"] = 21
+person_dict["hobbies"] = ["чтение", "программирование", "путешествия"]
+
+new_data = {
+    "is_married": True,
+    "hobbies": ["чтение", "программирование", "путешествия"],
+    "age": 22,
+}
+
+person_dict.update(new_data)
+person_dict.update(
+    {
+        "favorite_color": "white",
+    }
+)
+
+pprint(person_dict, sort_dicts=False)
+print(len(person_dict))
+print("name" in person_dict)
+
+# print(person_dict["nome"]) # KeyError: 'nome'
+print(person_dict.get("nome"))  # вернет None или значение, указанное вторым аргументом
 
 
 
-# update
+pprint(small_dict, sort_dicts=False)
+
+# for film in small_dict.keys():
+#     print(film)
+
+# keys - возвращает список ключей
+# values - возвращает список значений
+# items - возвращает список пар ключ-значение
+
+for film, year in small_dict.items():
+    print(film, year)
+
+#PRACTICE - вывести фильмы из словаря
+"""
+Попробуйте распечатать фильмы 2024 года
+Попробуйте найти фильмы где есть "чел" в названии
+"""
