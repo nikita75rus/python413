@@ -25,14 +25,23 @@
 """
 # coin_set = {"орел", "решка"}
 # print(coin_set.pop())
-
+import random
 THROUGHOUT = 100
-
+coin_list = ["орел", "решка"]
+# Счетчики орла и решки
+eagle_count = 0
+tails_count = 0
 
 for i in range(THROUGHOUT):
-    coin_set = {"орел", "решка"}
-    print(coin_set.pop())
+    coin = random.choice(coin_list)
+    if coin == "орел":
+        eagle_count += 1
+    else:
+        tails_count += 1
 
+    print(coin)
+
+print(f"Орел: {eagle_count}, Решка: {tails_count}")
 
 """
 
