@@ -282,7 +282,6 @@ print("name" in person_dict)
 print(person_dict.get("nome"))  # вернет None или значение, указанное вторым аргументом
 
 
-
 pprint(small_dict, sort_dicts=False)
 
 # for film in small_dict.keys():
@@ -295,8 +294,68 @@ pprint(small_dict, sort_dicts=False)
 for film, year in small_dict.items():
     print(film, year)
 
-#PRACTICE - вывести фильмы из словаря
+# PRACTICE - вывести фильмы из словаря
 """
 Попробуйте распечатать фильмы 2024 года
 Попробуйте найти фильмы где есть "чел" в названии
 """
+print("--------------------------")
+
+for film, year in small_dict.items():
+    if year == 2024:
+        print(film)
+    if "чел" in film.lower():
+        print(film)
+
+
+print(type(small_dict.keys()))  # <class 'dict_keys'>
+print(type(small_dict.values()))  # <class 'dict_values'>
+print(type(small_dict.items()))  # <class 'dict_items'>
+
+print(small_dict.keys())
+print(small_dict.values())
+print(small_dict.items())
+
+[
+    ("Железный человек", 2008),
+    ("Невероятный Халк", 2008),
+    ("Железный человек 2", 2010),
+    ("Тор", 2011),
+    ("Первый мститель", 2011),
+    ("Мстители", 2012),
+]
+
+dict_items = [("Железный человек", 2008)]
+film, year = dict_items[0]
+
+
+import os
+
+USER_DICT = r"C:\Users\user\Pictures"
+RESULT_DICT = {}
+
+# Итерируемся по файлам в директории и записываем в словарь
+# количество папок, и количество файлов по расширениям
+# На выходе получим словарь вида:
+# RESULT_DICT = {
+#     "jpg": 5,
+#     "png": 10
+#     "fodler": 10
+#     ...
+
+"""
+Методы OS которые тут могут подойти
+os.path.isdir(path) - проверяет, является ли путь директорией
+os.path.isfile(path) - проверяет, является ли путь файлом
+os.listdir - возвращает список файлов и директорий в указанной директории
+walk - обходит все директории в указанной директории и возвращает список файлов и директорий в каждой директории
+"""
+
+for file in os.listdir(USER_DICT):
+    if os.path.isdir(file):
+       RESULT_DICT['folder'] = RESULT_DICT.get('folder', 0) + 1
+    else:
+        file_ext = os.path.splitext(file)[1]
+        RESULT_DICT[file_ext] = RESULT_DICT.get(file_ext, 0) + 1
+
+print(RESULT_DICT)
