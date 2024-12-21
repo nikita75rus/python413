@@ -2,7 +2,7 @@
 Python: Разбор HW. Словари и обработка данных. Урок: 9
 21.12.2024
 
-- Разбор домашнего задания:
+- Разбор домашнего задания: +
     - Генератор пословиц
     - Разбор типовых ошибок
     - Оптимизация решений
@@ -37,3 +37,56 @@ Python: Разбор HW. Словари и обработка данных. Ур
         - Объединение словарей
         - Форматированный вывод
 """
+# Методы словарей
+
+
+# Методы словарей
+"""
+len(dict) - возвращает количество элементов в словаре
+for - итерация по ключам словаря
+in - проверяет, есть ли ключ в словаре
+get(key, default=None) - возвращает значение ключа, если ключ существует, иначе возвращает default
+items() - возвращает пары ключ-значение в виде списка кортежей
+keys() - возвращает список ключей
+values() - возвращает список значений
+update(other) - обновляет словарь, добавляя пары ключ-значение из other
+clear() - удаляет все элементы из словаря
+copy() - возвращает копию словаря
+fromkeys(iterable, value=None) - возвращает словарь с ключами из iterable и значением value
+pop(key, default=None) - удаляет ключ и возвращает значение, если ключ существует, иначе возвращает default
+popitem() - удаляет и возвращает последнюю пару ключ-значение
+setdefault - возвращает значение ключа, если ключ существует, иначе добавляет ключ с значением default
+"""
+
+# keys() - возвращает список ключей
+# values() - возвращает список значений
+# values() - возвращает список значений
+
+from marvel import small_dict
+
+marvel_keys = small_dict.keys()
+marvel_values = small_dict.values()
+marvel_items = small_dict.items()
+
+# print(marvel_keys[:3]) # TypeError: 'dict_keys' object is not subscriptable
+# print(marvel_values[:3])
+# print(marvel_items[:3])
+
+print(list(marvel_keys)[:3])  # TypeError: 'dict_keys' object is not subscriptable
+print(list(marvel_values)[:3])
+print(list(marvel_items)[:3])
+
+one_item = list(marvel_items)[0]
+print(one_item)
+print(type(one_item))  #  tuple
+
+# ('Железный человек', 2008)
+film, year = one_item
+
+# Кортеж - неизменяемый список
+# tuple - кортеж
+some_tuple = (1, 2, 3)
+typle_nums = 1,2
+
+for key, value in small_dict.items():
+    print(key, value)
