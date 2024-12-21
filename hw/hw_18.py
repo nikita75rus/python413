@@ -182,20 +182,18 @@ if user_input > max_count:
     user_input = max_count
     print(f"Вы можете получить максимум {max_count} пословиц")
 
-result = set()
-count = 0
+result = []
 
-while len(result) < user_input:
-    count += 1
-    # Сделаем shuffle
-    shuffle(proverbs)
-    shuffle(variants)
+# Делаем цикл в цикле для получения ВСЕХ комбинаций
 
-    proverb = proverbs[0]
-    variant = variants[0]
+for proverb in proverbs:
+    for variant in variants:
+        new_proverb = proverb.lower().replace("ум", variant).capitalize()
+        result.append(new_proverb)
 
-    new_proverb = proverb.lower().replace("ум", variant).capitalize()
-    result.add(new_proverb)
+# Перемешиваем список
+shuffle(result)
 
+# Выводим результат
+result = result[:user_input]
 print(result)
-print(f"Всего проходов: {count}")
