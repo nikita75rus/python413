@@ -129,12 +129,12 @@ variants = [
     "прорыв",
 ]
 
-user_input = int(input("Сколько пословиц вы хотите получить? "))
+# user_input = int(input("Сколько пословиц вы хотите получить? "))
 
-result = []
+# result = []
 
-proverbs = set(proverbs)
-variants = set(variants)
+# proverbs = set(proverbs)
+# variants = set(variants)
 
 
 # while - можно сделать while True: - и внутри цикла сделать break
@@ -144,7 +144,7 @@ variants = set(variants)
 #     # Проверка что ОБЕ коллекции ещё не пустые
 #     if not (proverbs and variants):
 #         break
-    
+
 #     # Проверка выдали ли мы нужное количество пословиц
 #     if len(result) == user_input:
 #         break
@@ -167,5 +167,35 @@ variants = set(variants)
 #     new_proverb = proverb.lower().replace("ум", variant).capitalize()
 #     result.append(new_proverb)
 
+# print(len(proverbs))
+# print(len(variants))
+# print(len(proverbs) * len(variants))
 
-[print(item) for item in result]
+from random import shuffle
+
+max_count = len(proverbs) * len(variants)
+print(f"Максимальное количество пословиц: {max_count}")
+
+user_input = int(input("Сколько пословиц вы хотите получить? "))
+
+if user_input > max_count:
+    user_input = max_count
+    print(f"Вы можете получить максимум {max_count} пословиц")
+
+result = set()
+count = 0
+
+while len(result) < user_input:
+    count += 1
+    # Сделаем shuffle
+    shuffle(proverbs)
+    shuffle(variants)
+
+    proverb = proverbs[0]
+    variant = variants[0]
+
+    new_proverb = proverb.lower().replace("ум", variant).capitalize()
+    result.add(new_proverb)
+
+print(result)
+print(f"Всего проходов: {count}")
