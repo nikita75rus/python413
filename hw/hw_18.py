@@ -140,35 +140,32 @@ variants = set(variants)
 # while - можно сделать while True: - и внутри цикла сделать break
 # while - можно сразу описать условия остановки
 
-while True:
-    # Проверка что ОБЕ коллекции ещё не пустые
-    if not (proverbs and variants):
-        break
+# while True:
+#     # Проверка что ОБЕ коллекции ещё не пустые
+#     if not (proverbs and variants):
+#         break
     
-    # Проверка выдали ли мы нужное количество пословиц
-    if len(result) == user_input:
-        break
+#     # Проверка выдали ли мы нужное количество пословиц
+#     if len(result) == user_input:
+#         break
 
-    # Делаем работу с коллекциями
+#     # Делаем работу с коллекциями
 
-    proverb = proverbs.pop()
-    variant = variants.pop()
+#     proverb = proverbs.pop()
+#     variant = variants.pop()
 
-    new_proverb = proverb.lower().replace("ум", variant).capitalize()
-    result.append(new_proverb)
+#     new_proverb = proverb.lower().replace("ум", variant).capitalize()
+#     result.append(new_proverb)
 
 
 # Вариант №2
 
+# while len(result) < user_input and proverbs and variants:
+#     proverb = proverbs.pop()
+#     variant = variants.pop()
 
-
-
-
-
-
-
-
-
+#     new_proverb = proverb.lower().replace("ум", variant).capitalize()
+#     result.append(new_proverb)
 
 
 [print(item) for item in result]
