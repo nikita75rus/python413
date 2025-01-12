@@ -7,3 +7,9 @@ Lesson 13
 git branch <имя ветки>
 git log --oneline --graph --all - вывод всех веток
 """
+
+# Пример кода
+a = 2 + 2
+
+# Пример кода 2
+b = 2 + 2
