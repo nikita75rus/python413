@@ -210,21 +210,25 @@ palindormes = [
 # 3. Словарь {"ТопоТ": True, ...}
 
 
-def is_palindrome(*words):
-    result_dict = {}
+def is_palindrome(*words: str) -> list[dict]:
+    """
+    Функция проверки слов на палиндромность. Проверяет слова и фразы с учетом регистра и пробелов.
+    """
+    result_list = []
     
     for word in words:
         raw_words = word.lower().replace(" ", "")
-        if word not in result_dict.keys():
-            if raw_words == raw_words[::-1]:
-                result_dict[word.lower()] = True
-            else:
-                result_dict[word.lower()] = False
+        if raw_words == raw_words[::-1]:
+            result_list.append({"word": word, "result": True})
+        else:
+            result_list.append({"word": word, "result": False})
     
-    return result_dict
+    return result_list
 
 
 print(is_palindrome(*palindormes))
 # {'казак': True, 'КазаК': True, 'Топот': True, 'ДОвоД': True, 'А роза упала на лапу Азора': True, 'Аргентина МаниТ негра': True}
 
-{'казак': True, 'топот': True, 'довод': True, 'арозаупаланалапуазора': True, 'аргентинаманитнегра': True}
+# {'казак': True, 'топот': True, 'довод': True, 'арозаупаланалапуазора': True, 'аргентинаманитнегра': True}
+
+# [{'word': 'казак', 'result': True}, {'word': 'КазаК', 'result': True}, {'word': 'КазаК', 'result': True}, {'word': 'Топот', 'result': True}, {'word': 'ДОвоД', 'result': True}, {'word': 'А роза упала на лапу Азора', 'result': True}, {'word': 'Аргентина МаниТ негра', 'result': True}]
