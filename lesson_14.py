@@ -195,21 +195,36 @@ print_all(*items)
 palindormes = [
     "казак",
     "КазаК",
+    "КазаК",
     "Топот",
     "ДОвоД",
     "А роза упала на лапу Азора",
     "Аргентина МаниТ негра",
 ]
 
+
+
+#ЧТО бы она могла отдавать наружу?
+# 1. Список списков. [["ТопоТ", True], ...]
+# 2. Список словарей [{"word": "ТопоТ", "result": True}, ...]
+# 3. Словарь {"ТопоТ": True, ...}
+
+
 def is_palindrome(*words):
+    result_dict = {}
+    
     for word in words:
         raw_words = word.lower().replace(" ", "")
-        
-        if raw_words == raw_words[::-1]:
-            print(f"{word} - это палиндром")
-        else:
-            print(f"{word} - это не палиндром")
+        if word not in result_dict.keys():
+            if raw_words == raw_words[::-1]:
+                result_dict[word.lower()] = True
+            else:
+                result_dict[word.lower()] = False
+    
+    return result_dict
 
 
-is_palindrome(*palindormes)
+print(is_palindrome(*palindormes))
+# {'казак': True, 'КазаК': True, 'Топот': True, 'ДОвоД': True, 'А роза упала на лапу Азора': True, 'Аргентина МаниТ негра': True}
 
+{'казак': True, 'топот': True, 'довод': True, 'арозаупаланалапуазора': True, 'аргентинаманитнегра': True}
