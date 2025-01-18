@@ -113,11 +113,52 @@ def some_func(name, last_name, age=18):
     return f"Имя: {name}, Фамилия: {last_name}, Возраст: {age}"
 
 
-some_func("Алексей", "Иванов")
-some_func("Алексей", "Иванов", 25)
-some_func(name="Алексей", last_name="Иванов")
-some_func(name="Алексей", last_name="Иванов", age=25)
+print(some_func("Алексей", "Иванов"))
+print(some_func("Алексей", "Иванов", 25))
+print(some_func(name="Алексей", last_name="Иванов"))
+print(some_func(name="Алексей", last_name="Иванов", age=25))
 
 student = {"name": "Алексей", "last_name": "Иванов", "age": 25}
 some_func(**student)
 
+# PRACTICE - Функция проверки на совершенолетие
+"""
+Напишите функцию is_adult которая прнимает один обязательный аргумент ( возраст) и 
+аргумент по умолчанию (порог совершенолетия).
+Возвращает True или False в зависимости от того, является ли возраст больше или равным порогу совершенолетия.
+
+"""
+
+def is_adult(age, threshold=18):
+    return age >= threshold
+
+def main():
+    user_age = int(input("Введите возраст: "))
+
+    if is_adult(user_age, 21):
+        print("Можешь войти")
+    else:
+        print("Ты еще молод")
+
+    input("Нажажмите Enter для выхода")
+    exit()
+
+main()
+
+
+# print(f"Имя: Владимир, Возраст: 25, Можешь войти: {is_adult(25)}")
+
+# AGE = 20
+# TRESHOLD = 21
+
+# if is_adult(AGE, TRESHOLD):
+#     print("Можешь войти")
+# else:
+#     print("Ты еще молод")
+
+
+# user_age = int(input("Введите возраст: "))
+# if is_adult(user_age):
+#     print("Можешь войти")
+# else:
+#     print("Ты еще молод")
