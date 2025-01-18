@@ -185,3 +185,31 @@ print_all("Один", "Два", "Три")
 items = ["Один", "Два", "Три"]
 print_all(*items)
 
+# PRACTICE - Функция c *words для проверки на палиндром
+"""
+Напишите функцию is_palindrome которая принимает *words аргументы
+и печатает Word - это ...
+Пусть проверка будет включать и регистр, а так же пробелы - чтобы многословные палиндромы тоже проверялись
+"""
+
+palindormes = [
+    "казак",
+    "КазаК",
+    "Топот",
+    "ДОвоД",
+    "А роза упала на лапу Азора",
+    "Аргентина МаниТ негра",
+]
+
+def is_palindrome(*words):
+    for word in words:
+        raw_words = word.lower().replace(" ", "")
+        
+        if raw_words == raw_words[::-1]:
+            print(f"{word} - это палиндром")
+        else:
+            print(f"{word} - это не палиндром")
+
+
+is_palindrome(*palindormes)
+
