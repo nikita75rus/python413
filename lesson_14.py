@@ -185,3 +185,50 @@ print_all("Один", "Два", "Три")
 items = ["Один", "Два", "Три"]
 print_all(*items)
 
+# PRACTICE - Функция c *words для проверки на палиндром
+"""
+Напишите функцию is_palindrome которая принимает *words аргументы
+и печатает Word - это ...
+Пусть проверка будет включать и регистр, а так же пробелы - чтобы многословные палиндромы тоже проверялись
+"""
+
+palindormes = [
+    "казак",
+    "КазаК",
+    "КазаК",
+    "Топот",
+    "ДОвоД",
+    "А роза упала на лапу Азора",
+    "Аргентина МаниТ негра",
+]
+
+
+
+#ЧТО бы она могла отдавать наружу?
+# 1. Список списков. [["ТопоТ", True], ...]
+# 2. Список словарей [{"word": "ТопоТ", "result": True}, ...]
+# 3. Словарь {"ТопоТ": True, ...}
+
+
+def is_palindrome(*words: str) -> list[dict]:
+    """
+    Функция проверки слов на палиндромность. Проверяет слова и фразы с учетом регистра и пробелов.
+    """
+    result_list = []
+    
+    for word in words:
+        raw_words = word.lower().replace(" ", "")
+        if raw_words == raw_words[::-1]:
+            result_list.append({"word": word, "result": True})
+        else:
+            result_list.append({"word": word, "result": False})
+    
+    return result_list
+
+
+print(is_palindrome(*palindormes))
+# {'казак': True, 'КазаК': True, 'Топот': True, 'ДОвоД': True, 'А роза упала на лапу Азора': True, 'Аргентина МаниТ негра': True}
+
+# {'казак': True, 'топот': True, 'довод': True, 'арозаупаланалапуазора': True, 'аргентинаманитнегра': True}
+
+# [{'word': 'казак', 'result': True}, {'word': 'КазаК', 'result': True}, {'word': 'КазаК', 'result': True}, {'word': 'Топот', 'result': True}, {'word': 'ДОвоД', 'result': True}, {'word': 'А роза упала на лапу Азора', 'result': True}, {'word': 'Аргентина МаниТ негра', 'result': True}]
