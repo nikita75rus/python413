@@ -66,7 +66,7 @@ def get_openai_request(
     """
 
     message = [{"role": "user", "content": prompt}]
-    
+
     response_big = client.chat.completions.create(
         model=model,
         messages=message,
@@ -77,12 +77,113 @@ def get_openai_request(
     return response
 
 
-result = get_openai_request(
-    client=client,
-    prompt="Напиши андекдот про то как Python разработчик выбирает имя функции",
-    max_tokens=400,
-    model="anthropic/claude-3-5-haiku",
-    temperature=0.9,
-)
+# result = get_openai_request(
+#     client=client,
+#     prompt="Напиши андекдот про то как Python разработчик выбирает имя функции",
+#     max_tokens=400,
+#     model="anthropic/claude-3-5-haiku",
+#     temperature=0.9,
+# )
 
-print(result)
+# print(result)
+
+import base64
+
+# # Функция для кодирования изображения в base64
+# def encode_image(image_path):
+#     with open(image_path, "rb") as image_file:
+#         return base64.b64encode(image_file.read()).decode("utf-8")
+
+# # Путь к вашему изображению
+# image_path = r"C:\Users\user\Pictures\кристалл.jpg"
+
+# # Получаем строку в формате base64
+# base64_image = encode_image(image_path)
+
+# response = client.chat.completions.create(
+#     model="gpt-4o-mini",
+#     temperature=0.5,
+#     max_tokens=200,
+#     messages=[
+#         {
+#             "role": "user",
+#             "content": [
+#                 {
+#                     "type": "text",
+#                     "text": "Ответить коротко. Что изображено на этой картинке?",
+#                 },
+#                 {
+#                     "type": "image_url",
+#                     "image_url": {"url": f"data:image/jpeg;base64,{base64_image}"},
+#                 },
+#             ],
+#         }
+#     ],
+# )
+
+# print(response.choices[0].message.content)
+
+#  PRACTICE
+"""
+Функция для анализа изображения
+Позволяет отправить картинку на анализ и получить ответ от GPT
+
+
+ client: OpenAI,
+    prompt: str,
+    max_tokens: int,
+    model: str = "openai/gpt-4o-mini",
+    temperature: float = 0.6,
+"""
+
+
+def analyze_image(
+    client: OpenAI,
+    prompt: str,
+    max_tokens: int,
+    image_path: str,
+    model: str = "openai/gpt-4o-mini",
+    temperature: float = 0.6,
+):
+    """
+    Функция для анализа изображения
+    Позволяет отправить картинку на анализ и получить ответ от GPT
+    """
+
+    with open(image_path, "rb") as image_file:
+        base64_image = base64.b64encode(image_file.read()).decode("utf-8")
+
+    response = client.chat.completions.create(
+        model=model,
+        temperature=temperature,
+        max_tokens=max_tokens,
+        messages=[
+            {
+                "role": "user",
+                "content": [
+                    {
+                        "type": "text",
+                        "text": prompt,
+                    },
+                    {
+                        "type": "image_url",
+                        "image_url": {"url": f"data:image/jpeg;base64,{base64_image}"},
+                    },
+                ],
+            }
+        ],
+    )
+    return response.choices[0].message.content
+
+
+if __name__ == "__main__":
+    result = analyze_image(
+        client=client,
+        prompt="Опиши изображение",
+        max_tokens=400,
+        image_path= r"C:\Users\user\Pictures\photo_2024-08-05_23-15-36.jpg",
+        model="openai/gpt-4o-mini",
+        temperature=0.9,
+    )
+    print(result)
+
