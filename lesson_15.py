@@ -18,4 +18,12 @@ def all_param_func(a, b, c=10, *args, **kwargs):
     print(f"{args=}")
     print(f"{kwargs=}")
 
-all_param_func(1, 2, 3, 4, five=5)
+
+if __name__ == "__main__":
+    all_param_func(1, 2, 3, 4, five=5)
+    print("Привет из модуля lesson_15")
+
+
+# name = __main__
+name = __name__
+print(name)
