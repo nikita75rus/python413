@@ -78,7 +78,11 @@ def read_txt(file_path: str, encoding: str = "utf-8") -> list[str]:
     :return :
     :raise :
     """
-    pass
+    file = open(file_path, "r", encoding=encoding)
+    lines = file.readlines()
+    clear_lines = [line.strip() for line in lines]
+    file.close()
+    return clear_lines
 
 
 def write_txt(file_path: str, data: list[str], encoding: str = "utf-8") -> None:
@@ -88,7 +92,10 @@ def write_txt(file_path: str, data: list[str], encoding: str = "utf-8") -> None:
     :return :
     :raise :
     """
-    pass
+    file = open(file_path, "w", encoding=encoding)
+    file.writelines(data)
+    file.close()
+
 
 
 def append_txt(file_path: str, data: list[str], encoding: str = "utf-8") -> None:
@@ -98,4 +105,7 @@ def append_txt(file_path: str, data: list[str], encoding: str = "utf-8") -> None
     :return :
     :raise :
     """
-    pass
+    file = open(file_path, "a", encoding=encoding)
+    file.writelines(data)
+    file.close()
+    
