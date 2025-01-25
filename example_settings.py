@@ -1,0 +1,1 @@
+VSE_GPT_API_KEY="Тут ваш API ключ от vsegpt.ru"

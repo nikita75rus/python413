@@ -14,7 +14,7 @@
 
 import random
 from pprint import pprint
-from marvel import small_dict
+from data.marvel import small_dict
 
 # PRACTICE Орел Решка на сетах
 """

@@ -1,7 +1,7 @@
 """
 """
 
-from marvel import simple_set, small_dict, full_dict
+from data.marvel import simple_set, small_dict, full_dict
 
 # Пересоберем сет
 

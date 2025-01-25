@@ -62,7 +62,7 @@ setdefault - возвращает значение ключа, если ключ
 # values() - возвращает список значений
 # values() - возвращает список значений
 
-from marvel import small_dict, full_dict
+from data.marvel import small_dict, full_dict
 from pprint import pprint
 
 marvel_keys = small_dict.keys()
