@@ -63,13 +63,16 @@ json_string = json.dumps(metallica_songs, indent=4, ensure_ascii=False)
 back_data = json.loads(json_string)
 
 # Записали
-with open("metallica_songs.json", "w", encoding="utf-8") as file:
-    json.dump(metallica_songs, file, indent=4, ensure_ascii=False)
+# with open("metallica_songs.json", "w", encoding="utf-8") as file:
+#     json.dump(metallica_songs, file, indent=4, ensure_ascii=False)
 
-
+# Дозапись
+# with open("metallica_songs.json", "a", encoding="utf-8") as file:
+#     json.dump(new_data, file, indent=4, ensure_ascii=False)
 
 # Прочитали
 with open("metallica_songs.json", "r", encoding="utf-8") as file:
     data = json.load(file)
 
-print(type(data))
+print(data)
+# json.decoder.JSONDecodeError: Extra data: line 23 column 2 (char 851)
