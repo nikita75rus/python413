@@ -170,3 +170,48 @@ metallica_songs_dict = [
         "description": "Лирическая композиция из альбома 'Ride the Lightning', одна из первых баллад группы. Песня о депрессии и потере смысла жизни."
     }
 ]
+
+# DictWriter
+# DictReader
+
+# Записываем список словарей в файл CSV
+with open("metallica_songs.csv", "w", encoding="utf-8-sig", newline="") as file:
+    writer = csv.DictWriter(
+        file,
+        fieldnames=metallica_songs_dict[0].keys(),
+        delimiter=";",
+    )
+    writer.writeheader()    # Можно не использовать с флагом А (для добавления позиций)
+    writer.writerows(metallica_songs_dict)
+
+# Для глубокой работы с Excel файлами - используем библиотеку openpyxl
+
+# Допишем в файл CSV с dictwriter
+with open("metallica_songs.csv", "a", encoding="utf-8-sig", newline="") as file:
+    writer = csv.DictWriter(
+        file,
+        fieldnames=metallica_songs_dict[0].keys(),
+        delimiter=";",
+    )
+    writer.writerow(
+        {
+            "name": "Hard Rock!",
+            "author": "Алексей",
+            "year": "2025",
+            "duration": "180",
+            "description": "Хардрок баллада от Алексея",
+        }
+    )
+
+# Прочитаем файл CSV
+with open("metallica_songs.csv", "r", encoding="utf-8-sig") as file:
+    reader = csv.DictReader(file, delimiter=";")
+    result = list(reader)
+
+print(result)
+
+# CRUD - Create, Read, Update, Delete
+# Create - запись в файл
+# Read - чтение из файла
+# Update - изменение данных в файле
+# Delete - удаление данных из файла
