@@ -215,3 +215,15 @@ print(result)
 # Read - чтение из файла
 # Update - изменение данных в файле
 # Delete - удаление данных из файла
+
+# import yaml  # pip install pyyaml
+
+import yaml  # pip install pyyaml
+
+# Чтение YAML файла
+# with open("config.yaml", "r", encoding="utf-8") as file:
+#     data = yaml.safe_load(file)
+
+# # Запись в YAML файл    
+# with open("config.yaml", "w", encoding="utf-8") as file:
+#     yaml.dump(data, file, default_flow_style=False, allow_unicode=True)
